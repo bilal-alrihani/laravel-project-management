@@ -12,10 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('task_tags', function (Blueprint $table) {
-            $table->id();
             $table->unsignedBigInteger('task_id');
             $table->unsignedBigInteger('tag_id');
-            $table->timestamps();
             $table->foreign('task_id')->references('id')->on('tasks');
             $table->foreign('tag_id')->references('id')->on('tags');
 
