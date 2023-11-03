@@ -9,14 +9,13 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $books = Project::all();
-        return response()->json($books);
+        $projects = auth()->user()->projects()->get();
+        return response()->json($projects);
     }
 
-    public function show($id)
+    public function show(Project $project)
     {
-        $book = Project::findOrFail($id);
-        return response()->json($book);
+        return $project;
     }
 
     public function store(Request $request)
